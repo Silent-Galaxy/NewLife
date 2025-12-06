@@ -66,3 +66,28 @@ CREATE TABLE products (
     data_json JSON, -- مشخصات متغیر اکانت
     status TINYINT DEFAULT 1
 );
+
+
+
+
+
+
+/NewLife
+│
+├── /public                # ریشه وب‌سایت (Web Root)
+│   ├── /assets
+│   │   ├── /css           # استایل‌ها (Tailwind/Custom)
+│   │   ├── /js            # منطق فرانت (App Core)
+│   │   └── /img           # تصاویر (Lazy loaded)
+│   ├── /api               # نقطه اتصال فرانت به بک
+│   │   ├── get_products.php
+│   │   └── order_action.php
+│   └── index.html         # قالب اصلی (SPA feel)
+│
+├── /backend               # منطق اصلی (غیر قابل دسترسی مستقیم)
+│   ├── /config            # اتصال دیتابیس
+│   ├── /core              # کلاس‌های اصلی (Security, DB)
+│   └── /cron              # اسکریپت‌های تولید کش
+│
+└── /storage               # محل ذخیره فایل‌های کش JSON
+    └── showcase_data.json
