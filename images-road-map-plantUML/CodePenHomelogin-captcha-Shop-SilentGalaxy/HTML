@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Animated Login Form</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&family=Roboto:wght@400;700&family=Source+Code+Pro:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- FIX: The main wrapper that the JavaScript needs to function -->
+<div class="secure-login-wrapper">
+
+    <!-- Language Switcher -->
+    <div class="lang-switcher-container">
+        <div class="lang-switcher">
+            <button type="button" data-lang="fa" class="glare-btn">
+                <img src="https://flagcdn.com/w20/ir.png" alt="Iran Flag">
+                <span>فارسی</span>
+            </button>
+            <button type="button" data-lang="en" class="active glare-btn">
+                <img src="https://flagcdn.com/w20/gb.png" alt="UK Flag">
+                <span>English</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Animated Ring Background -->
+    <div class="ring">
+      <i style="--clr:#00ff0a;"></i>
+      <i style="--clr:#ff0057;"></i>
+      <i style="--clr:#fffd44;"></i>
+      <div class="form-container">
+        <!-- Login Form -->
+        <form class="login active" novalidate>
+          <h2 data-lang-key="login_title">Login</h2>
+          <div class="inputBx">
+            <label for="login-username" class="visually-hidden">Username</label>
+            <input type="text" id="login-username" placeholder="Username" data-lang-key="username_placeholder" required autocomplete="username">
+          </div>
+          <div class="inputBx">
+            <label for="login-password" class="visually-hidden">Password</label>
+            <input type="password" id="login-password" placeholder="Password" data-lang-key="password_placeholder" required autocomplete="current-password">
+            <span class="password-toggle" role="button" aria-label="Show password"></span>
+          </div>
+          <div class="inputBx">
+            <button type="submit" class="submit-btn glare-btn">
+              <span class="btn-text" data-lang-key="signin_button">Sign in</span>
+            </button>
+          </div>
+          <div class="links">
+            <a href="#" id="forgot-password-link" data-lang-key="forgot_link">Forget Password</a>
+            <a href="#" id="signup-link" data-lang-key="signup_link">Signup</a>
+          </div>
+          <div class="divider" data-lang-key="or_divider">OR</div>
+          <div class="inputBx">
+            <button type="button" class="google-btn glare-btn">
+                <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
+                <span data-lang-key="google_signin">Sign in with Google</span>
+            </button>
+          </div>
+          <div class="links single-link">
+            <a href="#" id="phone-login-link" data-lang-key="phone_login_link">Login with Phone Number</a>
+          </div>
+        </form>
+
+        <!-- Signup Form -->
+        <form class="signup" novalidate>
+          <h2 data-lang-key="signup_title">Signup</h2>
+          <div class="inputBx">
+            <label for="signup-username" class="visually-hidden">Username</label>
+            <input type="text" id="signup-username" placeholder="Username" data-lang-key="username_placeholder" required autocomplete="username">
+          </div>
+          <div class="inputBx">
+            <label for="signup-email" class="visually-hidden">Email</label>
+            <input type="email" id="signup-email" placeholder="Email" data-lang-key="email_placeholder" required autocomplete="email">
+          </div>
+          <div class="inputBx">
+            <label for="signup-password" class="visually-hidden">Password</label>
+            <input type="password" id="signup-password" placeholder="Password" data-lang-key="password_placeholder" required autocomplete="new-password" aria-describedby="password-criteria-checklist">
+            <span class="password-toggle" role="button" aria-label="Show password"></span>
+          </div>
+          <div id="password-criteria-checklist" aria-live="polite"></div>
+          <div class="inputBx">
+            <label for="signup-confirm-password" class="visually-hidden">Confirm Password</label>
+            <input type="password" id="signup-confirm-password" placeholder="Confirm Password" data-lang-key="confirm_password_placeholder" required autocomplete="new-password">
+            <span class="password-toggle" role="button" aria-label="Show password"></span>
+          </div>
+          <div class="inputBx">
+            <button type="submit" class="submit-btn glare-btn">
+              <span class="btn-text" data-lang-key="signup_button">Sign up</span>
+            </button>
+          </div>
+          <div class="links">
+            <a href="#" class="login-link" data-lang-key="already_account">Already have an account?</a>
+          </div>
+        </form>
+
+        <!-- Forgot Password Form -->
+        <form class="forgot-password" novalidate>
+          <h2 data-lang-key="forgot_title">Forget Password</h2>
+          <div class="inputBx">
+            <label for="forgot-email" class="visually-hidden">Email</label>
+            <input type="email" id="forgot-email" placeholder="Enter your email" data-lang-key="enter_email_placeholder" required autocomplete="email">
+          </div>
+          <div class="inputBx">
+            <button type="submit" class="submit-btn glare-btn">
+              <span class="btn-text" data-lang-key="reset_button">Reset Password</span>
+            </button>
+          </div>
+          <div class="links">
+            <a href="#" class="login-link" data-lang-key="back_to_login">Back to Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
+    <!-- CAPTCHA MODAL -->
+    <div id="captcha-modal-overlay" class="hidden">
+        <div id="captcha-container">
+            <button id="captcha-close-btn" aria-label="Close Captcha">&times;</button>
+            <div id="captcha-challenge-wrapper">
+                <div class="captcha-header">
+                    <h3 data-lang-key="captcha_title">Identity Verification</h3>
+                    <p id="captcha-instruction" data-lang-key="slider_instruction">Drag the handle to align with the target.</p>
+                </div>
+                <div id="progress-bar-container"><div id="progress-bar"></div></div>
+                <div id="slider-container">
+                    <div id="slider-track">
+                        <div id="slider-target" aria-hidden="true"></div>
+                        <div id="slider-handle" role="slider" tabindex="0" data-lang-aria-label="slider_handle_label" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+                    </div>
+                </div>
+                <div id="code-challenge-container" class="hidden">
+                    <canvas id="captcha-canvas" width="200" height="50" aria-label="Captcha image code"></canvas>
+                    <div class="input-group">
+                        <input type="text" id="captcha-input" data-lang-placeholder="code_placeholder" autocomplete="off" aria-label="Captcha code input" maxlength="5" inputmode="text">
+                        <button id="check-code-btn" data-lang-key="check_btn">Check</button>
+                    </div>
+                </div>
+                <div id="captcha-status" aria-live="polite" aria-atomic="true"></div>
+            </div>
+            <div id="captcha-success-state" class="hidden">
+                <div class="success-icon">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 6L9 17L4 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <p data-lang-key="success_message">Verified!</p>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- End of secure-login-wrapper -->
+
+<script src="script.js"></script>
+</body>
+</html>
