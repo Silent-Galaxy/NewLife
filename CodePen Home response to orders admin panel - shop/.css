@@ -1,0 +1,193 @@
+/* === تنظیمات کلی و متغیرهای تم تاریک (الهام گرفته از Material Design) === */
+:root {
+    --primary-color: #79c0ff;
+    --bg-color: #0d1117;      /* پس‌زمینه اصلی صفحه */
+    --surface-color: #161b22; /* پس‌زمینه ویجت‌ها و سطوح */
+    --text-color: #e6edf3;
+    --text-muted: #7d8590;
+    --border-color: #21262d;
+    --success-color: #3fb950;
+    --warning-color: #d29922;
+    --danger-color: #f85149;
+    --font-family: 'Vazirmatn', sans-serif;
+    --border-radius: 8px;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+    --transition-speed: 0.2s ease-in-out;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    direction: rtl;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+/* === انیمیشن بارگذاری (Loader) === */
+.loader-container {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    height: 100vh; gap: 1rem; color: var(--text-muted);
+}
+.loader {
+    border: 5px solid var(--border-color); border-top: 5px solid var(--primary-color);
+    border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* === ساختار اصلی داشبورد === */
+.dashboard-container {
+    display: grid; grid-template-columns: 380px 1fr; gap: 2rem;
+    padding: 2rem; max-width: 1800px; margin: auto;
+}
+
+/* === ستون کناری و ویجت‌های عمومی === */
+.sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+.widget {
+    background-color: var(--surface-color); border-radius: var(--border-radius);
+    padding: 1.5rem; border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm); transition: box-shadow var(--transition-speed);
+}
+.widget:hover { box-shadow: var(--shadow-md); }
+.widget-title {
+    margin-top: 0; margin-bottom: 1.25rem; font-size: 1.1rem; font-weight: 500;
+    color: var(--text-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;
+}
+
+/* === ویجت پروفایل فروشنده === */
+.seller-profile { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.seller-avatar { width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--border-color); object-fit: cover; }
+.seller-name { margin: 0; font-size: 1.25rem; font-weight: 700; }
+.seller-rating { color: #ffca28; font-size: 1.1rem; letter-spacing: 2px; }
+.seller-stats { display: flex; justify-content: space-around; width: 100%; text-align: center; margin-top: 0.5rem; }
+.stat-item .stat-value { display: block; font-size: 1.1rem; font-weight: 700; }
+.stat-item .stat-label { font-size: 0.8rem; color: var(--text-muted); }
+
+/* === ستون اصلی (Main Content) === */
+.main-content { display: flex; flex-direction: column; gap: 1.5rem; }
+.product-header { background-color: var(--surface-color); border-radius: var(--border-radius); padding: 2rem; border: 1px solid var(--border-color); }
+.product-header h1 { margin: 0 0 0.5rem 0; font-size: 2.25rem; }
+.product-meta { display: flex; gap: 1.5rem; align-items: center; color: var(--text-muted); }
+.status { padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500; border: 1px solid transparent; }
+.status-pending { background-color: rgba(210, 153, 34, 0.15); color: var(--warning-color); border-color: var(--warning-color); }
+.status-approved { background-color: rgba(63, 185, 80, 0.15); color: var(--success-color); border-color: var(--success-color); }
+.status-rejected { background-color: rgba(248, 81, 73, 0.15); color: var(--danger-color); border-color: var(--danger-color); }
+.status-active { background-color: rgba(63, 185, 80, 0.15); color: var(--success-color); }
+.status-inactive { background-color: rgba(125, 133, 144, 0.15); color: var(--text-muted); }
+
+/* ساختار نمایش داده‌ها */
+.data-section { padding: 1.5rem; }
+.data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+.data-pair { display: flex; flex-direction: column; gap: 0.25rem; }
+.data-pair .label { font-size: 0.9rem; color: var(--text-muted); }
+.data-pair .value { font-size: 1rem; font-weight: 500; word-break: break-word; }
+.data-pair.wide { grid-column: span 2; }
+.data-pair.full-width { grid-column: 1 / -1; }
+.data-pair p.value { margin-top: 0.5rem; line-height: 1.8; white-space: pre-wrap; background-color: var(--bg-color); padding: 1rem; border-radius: var(--border-radius); border: 1px solid var(--border-color); }
+.price { color: var(--success-color); font-weight: 700; font-size: 1.2rem; }
+.price-range { display: flex; align-items: center; gap: 0.5rem; }
+.discount-info .value { color: var(--warning-color); }
+
+/* تگ‌ها */
+.tags-display-container { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+.tag-item { background-color: rgba(121, 192, 255, 0.1); color: var(--primary-color); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; }
+
+/* === گالری تصاویر === */
+.image-container {
+    position: relative;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+.image-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.image-container.main-image { aspect-ratio: 16 / 9; }
+.image-container.thumbnail-image { aspect-ratio: 1 / 1; cursor: pointer; border: 2px solid transparent; transition: border-color var(--transition-speed); }
+.image-container.thumbnail-image.active, .image-container.thumbnail-image:hover { border-color: var(--primary-color); }
+
+.image-fallback {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+.image-source-url {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    direction: ltr;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* State when image fails to load */
+.image-container.error img, .image-container.error .image-source-url { display: none; }
+.image-container.error .image-fallback { display: flex; }
+
+.thumbnails { display: flex; gap: 0.75rem; margin-top: 0.75rem; }
+
+/* تب‌ها */
+.tabs nav { border-bottom: 2px solid var(--border-color); margin-bottom: 1.5rem; }
+.tab-link { padding: 0.75rem 1.25rem; border: none; background: none; cursor: pointer; font-size: 1rem; font-family: inherit; color: var(--text-muted); border-bottom: 3px solid transparent; transform: translateY(2px); transition: all var(--transition-speed); }
+.tab-link.active { color: var(--primary-color); border-bottom-color: var(--primary-color); font-weight: 700; }
+.tab-content { display: none; animation: fadeIn 0.5s; }
+.tab-content.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* === استایل کامپوننت‌های خاص ستون کناری === */
+.action-panel textarea { width: 100%; min-height: 100px; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); font-family: inherit; margin-bottom: 1rem; resize: vertical; background-color: var(--bg-color); color: var(--text-color); transition: border-color var(--transition-speed), box-shadow var(--transition-speed); }
+.action-panel textarea:focus { border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(121, 192, 255, 0.2); outline: none; }
+.action-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+.btn { padding: 0.8rem; border: 1px solid transparent; border-radius: var(--border-radius); cursor: pointer; font-weight: 700; font-family: inherit; transition: all var(--transition-speed); }
+.btn:hover:not(:disabled) { opacity: 0.9; transform: translateY(-2px); }
+.btn:disabled { cursor: not-allowed; opacity: 0.5; }
+.btn-approve { background-color: var(--success-color); color: white; border-color: var(--success-color); }
+.btn-revise { background-color: var(--warning-color); color: #111; border-color: var(--warning-color); }
+.btn-reject { background-color: transparent; color: var(--danger-color); border-color: var(--danger-color); }
+.btn-reject:hover:not(:disabled) { background-color: var(--danger-color); color: white; }
+
+.history-timeline ul { padding-right: 1.5rem; margin: 0; list-style-type: none; border-right: 2px solid var(--border-color); }
+.history-timeline li { position: relative; margin-bottom: 1.25rem; font-size: 0.9rem; padding-right: 1rem; }
+.history-timeline li::before { content: ''; position: absolute; right: -9px; top: 8px; width: 16px; height: 16px; border-radius: 50%; background-color: var(--surface-color); border: 3px solid var(--border-color); transition: border-color var(--transition-speed); }
+.history-timeline li:hover::before { border-color: var(--primary-color); }
+.history-timeline li strong { color: var(--text-muted); }
+
+.google-preview { border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--border-radius); background-color: var(--bg-color); }
+.google-preview h3 { font-size: 1.1rem; color: #8ab4f8; margin: 0; font-weight: 400; }
+.google-preview .link { font-size: 0.9rem; color: #81c995; margin: 0.25rem 0; direction: ltr; text-align: left; }
+.google-preview .description { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
+
+/* === سیستم اعلان (Toast Notification) === */
+#toast-container { position: fixed; top: 1.5rem; left: 1.5rem; z-index: 1000; display: flex; flex-direction: column; gap: 0.5rem; }
+.toast { padding: 1rem 1.5rem; border-radius: var(--border-radius); color: white; background-color: #333; box-shadow: var(--shadow-md); animation: slideIn 0.3s ease-out; font-size: 0.95rem; }
+.toast.success { background-color: var(--success-color); }
+.toast.error { background-color: var(--danger-color); }
+.toast.warning { background-color: var(--warning-color); color: #111; }
+@keyframes slideIn { from { opacity: 0; transform: translateX(100%); } to { opacity: 1; transform: translateX(0); } }
+
+/* === طراحی واکنش‌گرا (Responsive) === */
+@media (max-width: 1200px) {
+    .dashboard-container { grid-template-columns: 1fr; }
+    .sidebar { order: 2; } .main-content { order: 1; }
+}
+@media (max-width: 768px) {
+    .dashboard-container { padding: 1rem; }
+    .data-grid { grid-template-columns: 1fr; }
+    .data-pair.wide { grid-column: span 1; }
+    .action-buttons { grid-template-columns: 1fr; gap: 0.75rem; }
+    #toast-container { left: 1rem; right: 1rem; top: 1rem; align-items: center; }
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داشبورد کنترل کیفیت محصول</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+
+    <div id="toast-container"></div>
+
+    <div id="loader" class="loader-container">
+        <div class="loader"></div>
+        <p>در حال بارگذاری اطلاعات محصول...</p>
+    </div>
+
+    <div class="dashboard-container" id="dashboard-main" style="display: none;">
+        <!-- ستون کناری: ابزارهای مدیریتی و اطلاعات زمینه -->
+        <aside class="sidebar">
+            <div class="widget seller-profile">
+                <img id="seller-avatar" src="" alt="آواتار فروشنده" class="seller-avatar">
+                <h3 id="seller-name" class="seller-name"></h3>
+                <div id="seller-rating" class="seller-rating"></div>
+                <div class="seller-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="seller-sales"></span>
+                        <span class="stat-label">فروش موفق</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="seller-member-since"></span>
+                        <span class="stat-label">عضویت از</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget action-panel">
+                <h2 class="widget-title">اقدامات مدیر</h2>
+                <textarea id="feedback-textarea" placeholder="بازخورد خود را برای فروشنده بنویسید... (اختیاری)"></textarea>
+                <div class="action-buttons">
+                    <button id="btn-reject" class="btn btn-reject">رد کردن</button>
+                    <button id="btn-revise" class="btn btn-revise">ارسال برای اصلاح</button>
+                    <button id="btn-approve" class="btn btn-approve">تایید و انتشار</button>
+                </div>
+            </div>
+
+            <div class="widget history-timeline">
+                <h2 class="widget-title">تاریخچه اقدامات</h2>
+                <ul id="history-list">
+                    <!-- تاریخچه به صورت پویا اینجا قرار می‌گیرد -->
+                </ul>
+            </div>
+
+            <div class="widget seo-preview">
+                <h2 class="widget-title">پیش‌نمایش SEO (گوگل)</h2>
+                <div class="google-preview">
+                    <h3 id="seo-title-preview"></h3>
+                    <p class="link" id="seo-url-preview"></p>
+                    <p class="description" id="seo-meta-preview"></p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ستون اصلی: محتوای محصول -->
+        <main class="main-content">
+            <header class="product-header">
+                <h1 id="product-name"></h1>
+                <div class="product-meta">
+                    <span id="store-name"></span>
+                    <span id="product-status" class="status"></span>
+                </div>
+            </header>
+
+            <section class="widget data-section">
+                <h2 class="widget-title">۱. اطلاعات عمومی</h2>
+                <div class="data-grid">
+                    <div class="data-pair wide"><span class="label">شناسه URL (Slug):</span><span class="value" id="product-slug"></span></div>
+                    <div class="data-pair wide"><span class="label">تگ‌های محصول:</span>
+                        <div id="tags-container" class="tags-display-container"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="widget data-section">
+                <h2 class="widget-title">۲. گالری تصاویر</h2>
+                <div class="image-gallery">
+                    <div id="main-image-wrapper">
+                        <!-- محتوای تصویر اصلی به صورت پویا اینجا قرار می‌گیرد -->
+                    </div>
+                    <div id="thumbnails-container" class="thumbnails"></div>
+                </div>
+            </section>
+
+            <section class="widget data-section">
+                <h2 class="widget-title">۳. جزئیات تکمیلی</h2>
+                <div id="details-container">
+                    <!-- جزئیات به صورت پویا اینجا قرار می‌گیرد -->
+                </div>
+            </section>
+
+            <section class="widget data-section">
+                <div class="tabs">
+                    <nav>
+                        <button class="tab-link active" data-tab="sell-info">اطلاعات فروش</button>
+                        <button class="tab-link" data-tab="buy-info">اطلاعات خرید</button>
+                    </nav>
+                    <div id="sell-info" class="tab-content active"></div>
+                    <div id="buy-info" class="tab-content"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
