@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فروش کلید TF2 - فروشگاه نئون</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="top-navbar">
+        <div class="navbar-left">
+            <nav class="nav-icons">
+                <div class="lang-switcher">
+                    <button data-lang="fa" title="فارسی"><img src="https://flagcdn.com/w20/ir.png" alt="Iran Flag"></button>
+                    <button data-lang="en" title="English" class="active"><img src="https://flagcdn.com/w20/gb.png" alt="UK Flag"></button>
+                </div>
+                <button id="theme-toggle-btn" class="nav-icon-btn" aria-label="Toggle Theme"><i class="fas fa-sun"></i></button>
+            </nav>
+            <div class="date-time-container">
+                <div class="time-wrapper"><i class="fa-regular fa-clock"></i><span id="time"></span></div>
+                <div class="date-wrapper"><i class="fa-regular fa-calendar-days"></i><span id="date"></span></div>
+            </div>
+        </div>
+        <div class="logo"><a href="#" data-lang-key="store_brand">NEON STORE</a></div>
+    </header>
+
+    <!-- ==================== ANIMATED BACKGROUND ==================== -->
+    <div class="ring-background"><i></i><i></i><i></i></div>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="page-content">
+        <div class="product-page-container">
+            <!-- Product Main Info -->
+            <div class="main-section">
+                <div class="product-image-container">
+                    <!-- **** اصلاح شد: لینک تصویر محصول با یک جایگزین باکیفیت و مرتبط **** -->
+                    <img src="https://images.unsplash.com/photo-1588506143388-3d5b9b85c88c?q=80&w=600" alt="TF2 Key" id="productImage" class="product-image">
+                </div>
+
+                <div class="product-details">
+                    <h1 class="product-title" data-lang-key="product_title">کلید صندوق Mann Co. (TF2 Key)</h1>
+                    
+                    <div class="product-meta">
+                        <div><i class="fas fa-tag"></i><span data-lang-key="meta_type_label">نوع:</span> <span data-lang-key="meta_type_value">آیتم استیم</span></div>
+                        <div><i class="fas fa-truck-fast"></i><span data-lang-key="meta_delivery_label">تحویل:</span> <span data-lang-key="meta_delivery_value">آنی (Trade Offer)</span></div>
+                    </div>
+
+                    <div class="seller-block">
+                        <div class="seller-info">
+                            <!-- **** اصلاح شد: لینک آواتار فروشنده با یک جایگزین مناسب **** -->
+                            <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=100" alt="Seller Avatar" class="seller-avatar">
+                            <div class="seller-name-rating">
+                                <a href="#" class="seller-name">ProGamer1</a>
+                                <div class="seller-rating">
+                                    <i class="fas fa-star"></i> 4.9 <span class="seller-rating-count">(+1,500)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="seller-stats">
+                            <div class="stat-item"><span data-lang-key="seller_response">پاسخ‌گویی:</span> <span><i class="fas fa-bolt"></i> <span data-lang-key="seller_response_time">کمتر از ۵ دقیقه</span></span></div>
+                            <div class="stat-item"><span data-lang-key="seller_sales">فروش موفق:</span> <span>2,300+</span></div>
+                        </div>
+                        <div class="seller-badges">
+                            <span class="badge-verified" data-lang-key="badge_verified"><i class="fas fa-check-circle"></i> فروشنده معتبر</span>
+                        </div>
+                    </div>
+
+                    <div class="product-price">
+                        <span class="current-price">85,000 <span data-lang-key="currency">تومان</span></span>
+                    </div>
+
+                    <div class="quantity-selector">
+                        <label for="quantity" data-lang-key="quantity">تعداد:</label>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" id="decrease-qty">-</button>
+                            <input type="number" id="quantity" value="1" min="1" readonly>
+                            <button class="quantity-btn" id="increase-qty">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-primary add-to-cart-btn" data-lang-key="add_to_cart"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
+                        <button class="btn btn-secondary wishlist-btn" id="wishlistBtn" data-lang-key="add_to_wishlist" aria-label="Add to wishlist"><i class="far fa-heart"></i> افزودن به علاقه‌مندی</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Tabs -->
+            <div class="info-section">
+                <div class="tabs">
+                    <button class="tab-link active" data-tab="description" data-lang-key="tab_description">توضیحات</button>
+                    <button class="tab-link" data-tab="qna" data-lang-key="tab_qna">پرسش و پاسخ</button>
+                    <button class="tab-link" data-tab="reviews" data-lang-key="tab_reviews">نظرات خریداران</button>
+                    <button class="tab-link" data-tab="requirements" data-lang-key="tab_requirements">پیش‌نیازها</button>
+                </div>
+
+                <div id="description" class="tab-content active">
+                    <h3 data-lang-key="description_title">توضیحات محصول</h3>
+                    <p data-lang-key="description_text">کلیدهای Mann Co. برای باز کردن صندوق‌های آیتم در بازی Team Fortress 2 استفاده می‌شوند. این کلیدها به صورت آنی و از طریق Trade Offer به اکانت استیم شما ارسال خواهند شد.</p>
+                </div>
+
+                <div id="qna" class="tab-content">
+                    <h3 data-lang-key="qna_title">پرسش و پاسخ</h3>
+                    <div class="qna-list" id="qnaList"></div>
+                </div>
+
+                <div id="reviews" class="tab-content">
+                    <h3 data-lang-key="reviews_title">نظرات خریداران</h3>
+                    <div class="reviews-list" id="reviewsList"></div>
+                </div>
+
+                <div id="requirements" class="tab-content">
+                    <h3 data-lang-key="requirements_title">پیش‌نیازهای تحویل</h3>
+                    <ul data-lang-key="requirements_list"></ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4 data-lang-key="footer_about_title">فروشگاه نئون</h4>
+                <p data-lang-key="footer_about_text">فروشگاه تخصصی شما برای جدیدترین گجت‌ها و پوشاک با تم نئون. استایل خود را از سال ۲۰۲۵ درخشان کنید.</p>
+            </div>
+            <div class="footer-column">
+                <h4 data-lang-key="footer_links_title">لینک‌های سریع</h4>
+                <ul>
+                    <li><a href="#" data-lang-key="link_about">درباره ما</a></li>
+                    <li><a href="#" data-lang-key="link_contact">تماس با ما</a></li>
+                    <li><a href="#" data-lang-key="link_faq">سوالات متداول</a></li>
+                    <li><a href="#" data-lang-key="link_terms">شرایط خدمات</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 data-lang-key="footer_social_title">ما را دنبال کنید</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-lang-key="footer_copyright">.تمام حقوق محفوظ است © 2025 فروشگاه نئون</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
