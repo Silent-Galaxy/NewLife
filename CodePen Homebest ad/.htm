@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پلتفرم آیتم‌های بازی - Gaming Market</title>
+
+    <!-- 1. لینک به فونت‌های متریال و فونت فارسی -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- 2. لینک به فایل CSS کتابخانه Swiper.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    
+    <!-- 3. لینک به فایل CSS کتابخانه Material Design Components -->
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+    
+    <!-- 4. لینک به فایل CSS سفارشی ما -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- بخش اسلایدر اصلی (Hero Slider) - ابعاد بزرگ و سینمایی -->
+    <header class="hero-section">
+        <div class="swiper hero-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image: url('https://picsum.photos/seed/steam/1200/400');">
+                    <div class="hero-text"><h2>تخفیف‌های بزرگ استیم</h2><p>هزاران بازی با تخفیف‌های باورنکردنی!</p></div>
+                </div>
+                <div class="swiper-slide" style="background-image: url('https://picsum.photos/seed/csgo/1200/400');">
+                    <div class="hero-text"><h2>بازار آیتم‌های CS</h2><p>کمیاب‌ترین اسکین‌ها را پیدا کنید.</p></div>
+                </div>
+                <div class="swiper-slide" style="background-image: url('https://picsum.photos/seed/dota2/1200/400');">
+                    <div class="hero-text"><h2>آیتم‌های کمیاب Dota 2</h2><p>مجموعه خود را با آرکاناهای جدید کامل کنید.</p></div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- بخش محتوای اصلی -->
+        <main class="main-content">
+            <h1>آخرین آیتم‌های اضافه شده</h1>
+            <p>به بزرگترین بازار آیتم‌های بازی خوش آمدید! در اینجا می‌توانید جدیدترین و محبوب‌ترین آیتم‌های بازی‌های استیم مانند CS, Dota 2, TF2 و... را با بهترین قیمت پیدا کرده و به صورت آنی تحویل بگیرید.</p>
+            <p>تیم ما همواره در تلاش است تا امن‌ترین و سریع‌ترین پلتفرم را برای معاملات شما فراهم آورد. از گشت و گذار در سایت لذت ببرید!</p>
+        </main>
+
+        <!-- ستون کناری برای اسلایدرهای تبلیغاتی - ابعاد 16:9 -->
+        <aside class="ad-sidebar">
+            <div class="ad-slider-container">
+                <button class="mdc-icon-button material-icons ad-slider-close-btn" aria-label="بستن" title="بستن">close</button>
+                <div class="swiper ad-slider-1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><div class="mdc-card ad-card"><div class="mdc-card__media mdc-card__media--16-9" style="background-image: url('https://picsum.photos/seed/giftcard/300/169');"></div><div class="card-content"><h3>گیفت کارت 20$ استیم</h3></div></div></div>
+                        <div class="swiper-slide"><div class="mdc-card ad-card"><div class="mdc-card__media mdc-card__media--16-9" style="background-image: url('https://picsum.photos/seed/tf2key/300/169'); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #2c2a27;"></div><div class="card-content"><h3>کلید Mann Co.</h3></div></div></div>
+                    </div>
+                    <div class="swiper-button-next"></div><div class="swiper-button-prev"></div>
+                </div>
+            </div>
+            <div class="ad-slider-container">
+                 <button class="mdc-icon-button material-icons ad-slider-close-btn" aria-label="بستن" title="بستن">close</button>
+                 <div class="swiper ad-slider-2">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><div class="mdc-card ad-card"><div class="mdc-card__media mdc-card__media--16-9" style="background-image: url('https://picsum.photos/seed/ak47/300/169'); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #1e2a39;"></div><div class="card-content"><h3>AK-47 | Wild Lotus</h3></div></div></div>
+                        <div class="swiper-slide"><div class="mdc-card ad-card"><div class="mdc-card__media mdc-card__media--16-9" style="background-image: url('https://picsum.photos/seed/awp/300/169'); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #1e2a39;"></div><div class="card-content"><h3>AWP | Gungnir</h3></div></div></div>
+                    </div>
+                    <div class="swiper-button-next"></div><div class="swiper-button-prev"></div>
+                </div>
+            </div>
+             <div class="ad-slider-container">
+                 <button class="mdc-icon-button material-icons ad-slider-close-btn" aria-label="بستن" title="بستن">close</button>
+                 <div class="swiper ad-slider-3">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><div class="mdc-card ad-card"><div class="mdc-card__media mdc-card__media--16-9" style="background-image: url('https://picsum.photos/seed/drow/300/169');"></div><div class="card-content"><h3>Arcana Drow Ranger</h3></div></div></div>
+                        <div class="swiper-slide"><div class="mdc-card ad-card"><div class="mdc-card__media mdc-card__media--16-9" style="background-image: url('https://picsum.photos/seed/tf2hat/300/169');"></div><div class="card-content"><h3>TF2 Unusual Hat</h3></div></div></div>
+                    </div>
+                    <div class="swiper-button-next"></div><div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- ساختار مودال خوشامدگویی با اسلایدر - ابعاد مناسب برای مودال -->
+    <div class="mdc-dialog" id="welcome-dialog">
+        <div class="mdc-dialog__container">
+            <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true">
+                 <button class="mdc-icon-button material-icons dialog-close-button" data-mdc-dialog-action="close" aria-label="بستن" title="بستن">close</button>
+                <div class="swiper welcome-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" style="background-image: url('https://picsum.photos/seed/fortnite/400/225');"></div>
+                        <div class="swiper-slide" style="background-image: url('https://picsum.photos/seed/cod/400/225');"></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="mdc-dialog__content" id="welcome-dialog-content">
+                    <h3>به Gaming Market خوش آمدید!</h3>
+                    <p>با عضویت در خبرنامه، از جدیدترین آیتم‌ها و تخفیف‌های انحصاری باخبر شوید.</p>
+                </div>
+                <div class="mdc-dialog__actions">
+                    <button type="button" class="mdc-button mdc-button--raised mdc-dialog__button" data-mdc-dialog-action="accept">
+                        <span class="mdc-button__label">عضویت در خبرنامه</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="mdc-dialog__scrim"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
