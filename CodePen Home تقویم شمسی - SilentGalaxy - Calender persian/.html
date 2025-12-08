@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقویم فصلی هوشمند</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- کلاس تم فصلی توسط جاوااسکریپت به این عنصر اضافه می‌شود -->
+    <div class="calendar-container" id="calendar-container">
+        <div class="calendar-header">
+            <button class="today-btn" id="today-btn">امروز</button>
+            <div class="month-year" id="month-year"></div>
+            <div class="nav-buttons">
+                <button class="nav-btn" id="prev-year" aria-label="سال قبل">«</button>
+                <button class="nav-btn" id="prev-month" aria-label="ماه قبل">‹</button>
+                <button class="nav-btn" id="next-month" aria-label="ماه بعد">›</button>
+                <button class="nav-btn" id="next-year" aria-label="سال بعد">»</button>
+            </div>
+        </div>
+        
+        <div class="weekdays">
+            <div>شنبه</div>
+            <div>یکشنبه</div>
+            <div>دوشنبه</div>
+            <div>سه‌شنبه</div>
+            <div>چهارشنبه</div>
+            <div>پنجشنبه</div>
+            <div>جمعه</div>
+        </div>
+        
+        <div class="days" id="days-container">
+            <!-- روزها توسط جاوااسکریپت پر می‌شوند -->
+        </div>
+    </div>
+
+    <div class="events-sidebar" id="events-sidebar">
+        <div class="sidebar-header">
+            <h3 id="sidebar-title">مناسبت‌ها</h3>
+            <button class="close-sidebar-btn" id="close-sidebar-btn" aria-label="بستن">&times;</button>
+        </div>
+        <div id="events-list"></div>
+    </div>
+
+    <div class="modal" id="event-modal">
+        <div class="modal-content">
+            <h3 id="modal-title">افزودن مناسبت</h3>
+            <div id="modal-date"></div>
+            <input type="text" id="event-title" placeholder="عنوان مناسبت">
+            <div class="modal-buttons">
+                <button id="save-event">ذخیره</button>
+                <button id="cancel-event">لغو</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
