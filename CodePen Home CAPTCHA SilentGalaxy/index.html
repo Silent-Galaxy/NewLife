@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!-- زبان و جهت صفحه توسط جاوااسکریپت تنظیم خواهد شد -->
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="page_title">کپچای هوشمند نسخه 8.0</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- مخزن آیکون‌ها برای دسترسی آسان در جاوااسکریپت -->
+    <div id="icon-repository" style="display: none;">
+        <svg id="flag-ir" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 3"><path fill="#239f40" d="M0 0h5v1H0z"/><path fill="#fff" d="M0 1h5v1H0z"/><path fill="#d90000" d="M0 2h5v1H0z"/></svg>
+        <svg id="flag-gb" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><clipPath id="a"><path d="M0 0v30h60V0z"/></clipPath><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6" clip-path="url(#a)"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#a)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></svg>
+    </div>
+
+    <div id="captcha-container">
+        <button id="lang-switcher-btn"></button>
+        
+        <!-- حالت اصلی: چالش کپچا -->
+        <div id="captcha-challenge-wrapper">
+            <div class="captcha-header">
+                <h3 data-lang-key="captcha_title">تایید هویت</h3>
+                <p id="captcha-instruction" data-lang-key="slider_instruction">برای ادامه، دستگیره را بکشید تا با هدف هم‌تراز شود.</p>
+            </div>
+
+            <div id="progress-bar-container">
+                <div id="progress-bar"></div>
+            </div>
+
+            <div id="slider-container">
+                <div id="slider-track">
+                    <div id="slider-target" aria-hidden="true"></div>
+                    <div id="slider-handle" role="slider" tabindex="0" 
+                         data-lang-aria-label="slider_handle_label"
+                         aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+                </div>
+            </div>
+
+            <div id="code-challenge-container" class="hidden">
+                <canvas id="captcha-canvas" width="200" height="50" aria-label="Captcha image code"></canvas>
+                <div class="input-group">
+                    <input type="text" id="captcha-input" 
+                           data-lang-placeholder="code_placeholder" 
+                           autocomplete="off" 
+                           aria-label="Captcha code input"
+                           maxlength="5"
+                           inputmode="text">
+                    <button id="check-code-btn" data-lang-key="check_btn">بررسی</button>
+                </div>
+            </div>
+            
+            <!-- عنصر نمایش وضعیت با قابلیت خوانده شدن توسط صفحه‌خوان‌ها -->
+            <div id="captcha-status" aria-live="polite" aria-atomic="true"></div>
+        </div>
+
+        <!-- حالت موفقیت -->
+        <div id="captcha-success-state" class="hidden">
+            <div class="success-icon">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L9 17L4 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <p data-lang-key="success_message">تایید شد!</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
