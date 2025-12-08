@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Store Showcase</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <header class="top-navbar">
+        <div class="navbar-left">
+            <nav class="nav-icons">
+                <div class="lang-switcher">
+                    <button data-lang="fa"><img src="https://flagcdn.com/w20/ir.png" alt="Iran Flag"></button>
+                    <button data-lang="en" class="active"><img src="https://flagcdn.com/w20/gb.png" alt="UK Flag"></button>
+                </div>
+                <button class="nav-icon-btn" aria-label="User Profile"><i class="fas fa-user"></i></button>
+                <button class="nav-icon-btn" aria-label="Shopping Cart"><i class="fas fa-shopping-cart"></i><span class="cart-badge">3</span></button>
+                <button id="theme-toggle-btn" class="nav-icon-btn" aria-label="Toggle Theme"><i class="fas fa-sun"></i></button>
+            </nav>
+            <div class="date-time-container">
+                <div class="time-wrapper"><i class="fa-regular fa-clock"></i><span id="time"></span></div>
+                <div class="date-wrapper"><i class="fa-regular fa-calendar-days"></i><span id="date"></span></div>
+            </div>
+        </div>
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search products..." data-lang-key="search_placeholder">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="logo"><a href="#" data-lang-key="store_brand">NEON STORE</a></div>
+    </header>
+
+    <!-- Animated Background -->
+    <div class="ring-background">
+        <i></i><i></i><i></i>
+    </div>
+
+    <!-- Page Content Wrapper -->
+    <div class="page-content">
+        <!-- Main Store Area (Filters + Products) -->
+        <main class="store-main-container">
+            <!-- Filters Sidebar -->
+            <aside class="filter-sidebar">
+                <h3 data-lang-key="filters_title">Filters</h3>
+                <div class="filter-group">
+                    <h4 data-lang-key="price_range">Price Range</h4>
+                    <div class="price-input">
+                        <div class="field"><span data-lang-key="min_price">Min</span><input type="number" class="input-min" value="0"></div>
+                        <div class="separator">-</div>
+                        <div class="field"><span data-lang-key="max_price">Max</span><input type="number" class="input-max" value="1000"></div>
+                    </div>
+                    <div class="slider"><div class="progress"></div></div>
+                    <div class="range-input">
+                        <input type="range" class="range-min" min="0" max="1000" value="0" step="10">
+                        <input type="range" class="range-max" min="0" max="1000" value="1000" step="10">
+                    </div>
+                </div>
+                <div class="filter-group" id="category-filter">
+                    <h4 data-lang-key="categories">Categories</h4>
+                </div>
+                <div class="filter-group">
+                    <h4 data-lang-key="status">Status</h4>
+                    <label class="custom-checkbox"><input type="checkbox" value="in-stock" checked> <span data-lang-key="status_instock">In Stock</span></label>
+                    <label class="custom-checkbox"><input type="checkbox" value="out-of-stock"> <span data-lang-key="status_outofstock">Out of Stock</span></label>
+                </div>
+                <div class="filter-group">
+                    <h4 data-lang-key="offers">Offers</h4>
+                    <label class="custom-checkbox"><input type="checkbox" id="discount-filter"> <span data-lang-key="on_sale">On Sale</span></label>
+                </div>
+                <button id="reset-filters-btn" data-lang-key="reset_filters">Reset Filters</button>
+            </aside>
+
+            <!-- Products Section -->
+            <div class="store-container">
+                <div class="store-header">
+                    <h1 class="store-title" data-lang-key="store_title">Our Products</h1>
+                    <div class="sort-container">
+                        <label for="sort-by" data-lang-key="sort_by_label">Sort by:</label>
+                        <select id="sort-by">
+                            <option value="popularity" data-lang-key="sort_popularity">Most Popular</option>
+                            <option value="price-asc" data-lang-key="sort_price_asc">Price: Low to High</option>
+                            <option value="price-desc" data-lang-key="sort_price_desc">Price: High to Low</option>
+                            <option value="discount" data-lang-key="sort_discount">Biggest Discount</option>
+                            <option value="reviews" data-lang-key="sort_reviews">Most Reviewed</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="store-showcase">
+                    <!-- Product Cards will be populated by JS -->
+                </div>
+                <div class="load-more-container">
+                    <button id="load-more-btn" data-lang-key="load_more">Load More Products</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Advertisement Sidebar -->
+        <aside class="ad-sidebar">
+            <h3 data-lang-key="ad_title">Advertisements</h3>
+            <a href="#" class="ad-link-wrapper">
+                <div class="ad-spot promo-ad" data-countdown-end="2025-09-25T23:59:59">
+                    <div class="ad-image-placeholder"><img src="https://images.unsplash.com/photo-1566576912321-d58674a07654?q=80&w=400" alt="Retro Gadgets Ad"></div>
+                    <h5 class="ad-title" data-lang-key="ad1_title">Retro Week</h5>
+                    <p class="ad-text" data-lang-key="ad1_text">All retro gadgets 25% off!</p>
+                    <div class="countdown-container">
+                        <div class="countdown-timer"></div>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="ad-link-wrapper">
+                <div class="ad-spot promo-ad" data-countdown-end="2025-09-22T18:00:00">
+                    <div class="ad-image-placeholder"><img src="https://images.unsplash.com/photo-1585298723682-711556145117?q=80&w=400" alt="Audio Devices Ad"></div>
+                    <h5 class="ad-title" data-lang-key="ad2_title">Audio Blast</h5>
+                    <p class="ad-text" data-lang-key="ad2_text">Flash sale on all audio devices.</p>
+                    <div class="countdown-container">
+                        <div class="countdown-timer"></div>
+                    </div>
+                </div>
+            </a>
+            <div class="ad-spot">
+                <span data-lang-key="ad_placeholder">Your Ad Here</span>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4 data-lang-key="footer_about_title">Neon Store</h4>
+                <p data-lang-key="footer_about_text">Your one-stop shop for the coolest neon-themed gadgets and fashion. Lighting up your style since 2025.</p>
+            </div>
+            <div class="footer-column">
+                <h4 data-lang-key="footer_links_title">Quick Links</h4>
+                <ul>
+                    <li><a href="#" data-lang-key="link_about">About Us</a></li>
+                    <li><a href="#" data-lang-key="link_contact">Contact</a></li>
+                    <li><a href="#" data-lang-key="link_faq">FAQ</a></li>
+                    <li><a href="#" data-lang-key="link_terms">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 data-lang-key="footer_social_title">Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Aparat"><i class="fas fa-video"></i></a>
+                    <a href="#" aria-label="Eita"><i class="fas fa-comment-dots"></i></a>
+                    <a href="#" aria-label="Rubika"><i class="fas fa-users"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4 data-lang-key="footer_trust_title">Trust Seals</h4>
+                <div class="trust-seals">
+                    <div class="trust-seal-placeholder"><span data-lang-key="coming_soon">Coming Soon</span></div>
+                    <div class="trust-seal-placeholder"><span data-lang-key="coming_soon">Coming Soon</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-lang-key="footer_copyright">© {year} Neon Store. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Hidden container for initial product data -->
+    <div id="product-data" style="display: none;">
+        <!-- All product cards are placed here initially -->
+        <div class="product-card" data-price="299.99" data-category="Gadgets" data-views="1520" data-purchases="310" data-reviews="88" data-discount-amount="0">
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400" alt="Product"></div>
+            <div class="card-content"><span class="category" data-lang-key="category_gadgets">Gadgets</span><h3 class="product-name" data-lang-key="product1_name">Cyber Watch X</h3><div class="availability in-stock"><span data-lang-key="status_instock">In Stock</span></div></div>
+            <div class="card-footer"><div class="price"><span>$299.99</span></div><div class="quantity-display"><span data-lang-key="quantity">Quantity</span>: 15</div></div>
+            <button class="heart-btn">♥</button>
+        </div>
+        <div class="product-card out-of-stock" data-stock-status="Out of Stock" data-price="149.50" data-category="Fashion" data-views="850" data-purchases="120" data-reviews="45" data-discount-amount="0">
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=400" alt="Product"></div>
+            <div class="card-content"><span class="category" data-lang-key="category_fashion">Fashion</span><h3 class="product-name" data-lang-key="product2_name">Neon Runners</h3><div class="availability"><span data-lang-key="status_outofstock">Out of Stock</span></div></div>
+            <div class="card-footer"><div class="price"><span>$149.50</span></div><div class="quantity-display"><span data-lang-key="quantity">Quantity</span>: 0</div></div>
+            <button class="heart-btn">♥</button>
+        </div>
+        <div class="product-card" data-price="179.00" data-category="Audio" data-discount="true" data-original-price="199.00" data-discount-amount="20.00" data-views="2100" data-purchases="550" data-reviews="150" data-countdown-end="2025-09-28T12:00:00">
+            <div class="badge-container"><div class="discount-badge" data-lang-key="sale_badge">SALE</div><div class="discount-percentage"></div></div>
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=400" alt="Product"></div>
+            <div class="card-content">
+                <span class="category" data-lang-key="category_audio">Audio</span><h3 class="product-name" data-lang-key="product3_name">Aura Headphones</h3>
+                <div class="discount-timer-container"><small data-lang-key="countdown_ends_in">Offer ends in:</small><div class="countdown-timer"></div></div>
+                <div class="availability in-stock"><span data-lang-key="status_instock">In Stock</span></div>
+            </div>
+            <div class="card-footer"><div class="price"><span class="original-price">$199.00</span><span class="sale-price">$179.00</span></div><div class="quantity-display"><span data-lang-key="quantity">Quantity</span>: 32</div></div>
+            <button class="heart-btn">♥</button>
+        </div>
+        <div class="product-card" data-price="175.00" data-category="Gadgets" data-views="1800" data-purchases="400" data-reviews="110" data-discount-amount="0">
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=400" alt="Product"></div>
+            <div class="card-content"><span class="category" data-lang-key="category_gadgets">Gadgets</span><h3 class="product-name" data-lang-key="product4_name">Smart Ring</h3><div class="availability in-stock"><span data-lang-key="status_instock">In Stock</span></div></div>
+            <div class="card-footer"><div class="price"><span>$175.00</span></div><div class="quantity-display"><span data-lang-key="quantity">Quantity</span>: 25</div></div>
+            <button class="heart-btn">♥</button>
+        </div>
+        <div class="product-card" data-price="450.00" data-category="Gadgets" data-discount="true" data-original-price="499.00" data-discount-amount="49.00" data-views="1650" data-purchases="280" data-reviews="95" data-countdown-end="2025-10-01T00:00:00">
+            <div class="badge-container"><div class="discount-badge" data-lang-key="sale_badge">SALE</div><div class="discount-percentage"></div></div>
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1579586337278-35d99a4a89b5?q=80&w=400" alt="Product"></div>
+            <div class="card-content">
+                <span class="category" data-lang-key="category_gadgets">Gadgets</span><h3 class="product-name" data-lang-key="product5_name">VR Headset</h3>
+                <div class="discount-timer-container"><small data-lang-key="countdown_ends_in">Offer ends in:</small><div class="countdown-timer"></div></div>
+                <div class="availability in-stock"><span data-lang-key="status_instock">In Stock</span></div>
+            </div>
+            <div class="card-footer"><div class="price"><span class="original-price">$499.00</span><span class="sale-price">$450.00</span></div><div class="quantity-display"><span data-lang-key="quantity">Quantity</span>: 8</div></div>
+            <button class="heart-btn">♥</button>
+        </div>
+        <div class="product-card" data-price="350.00" data-category="Gadgets" data-views="980" data-purchases="150" data-reviews="60" data-discount-amount="0">
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=400" alt="Product"></div>
+            <div class="card-content"><span class="category" data-lang-key="category_gadgets">Gadgets</span><h3 class="product-name" data-lang-key="product6_name">Retro Camera</h3><div class="availability in-stock"><span data-lang-key="status_instock">In Stock</span></div></div>
+            <div class="card-footer"><div class="price"><span>$350.00</span></div><div class="quantity-display"><span data-lang-key="quantity">Quantity</span>: 12</div></div>
+            <button class="heart-btn">♥</button>
+        </div>
+        <div class="product-card" data-price="999.00" data-category="Gadgets" data-views="2500" data-purchases="600" data-reviews="210" data-discount-amount="0">
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=400" alt="Product"></div>
+            <div class="card-content"><span class="category" data-lang-key="category_gadgets">Gadgets</span><h3 class="product-name" data-lang-key="product7_name">Smartphone Pro</h3><div class="availability in-stock"><span data-lang-key="status_instock">In Stock</span></div></div>
+            <div class="card-footer"><div class="price"><span>$999.00</span></div><div class="quantity-display"><span data-lang-key="quantity">Quantity</span>: 50</div></div>
+            <button class="heart-btn">♥</button>
+        </div>
+        <div class="product-card" data-price="250.00" data-category="Fashion" data-views="1300" data-purchases="250" data-reviews="80" data-discount-amount="0">
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1585155770422-768354436a13?q=80&w=400" alt="Product"></div>
+            <div class="card-content"><span class="category" data-lang-key="category_fashion">Fashion</span><h3 class="product-name" data-lang-key="product8_name">Leather Jacket</h3><div class="availability in-stock"><span data-lang-key="status_instock">In Stock</span></div></div>
+            <div class="card-footer"><div class="price"><span>$250.00</span></div><div class="quantity-display"><span data-lang-key="quantity">Quantity</span>: 18</div></div>
+            <button class="heart-btn">♥</button>
+        </div>
+        <div class="product-card" data-price="180.00" data-category="Fashion" data-views="1050" data-purchases="190" data-reviews="65" data-discount-amount="0">
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=400" alt="Product"></div>
+            <div class="card-content"><span class="category" data-lang-key="category_fashion">Fashion</span><h3 class="product-name" data-lang-key="product9_name">Classic Boots</h3><div class="availability in-stock"><span data-lang-key="status_instock">In Stock</span></div></div>
+            <div class="card-footer"><div class="price"><span>$180.00</span></div><div class="quantity-display"><span data-lang-key="quantity">Quantity</span>: 22</div></div>
+            <button class="heart-btn">♥</button>
+        </div>
+        <div class="product-card" data-price="120.00" data-category="Fashion" data-views="1100" data-purchases="220" data-reviews="70" data-discount-amount="0">
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?q=80&w=400" alt="Product"></div>
+            <div class="card-content"><span class="category" data-lang-key="category_fashion">Fashion</span><h3 class="product-name" data-lang-key="product10_name">Adventure Backpack</h3><div class="availability in-stock"><span data-lang-key="status_instock">In Stock</span></div></div>
+            <div class="card-footer"><div class="price"><span>$120.00</span></div><div class="quantity-display"><span data-lang-key="quantity">Quantity</span>: 40</div></div>
+            <button class="heart-btn">♥</button>
+        </div>
+        <div class="product-card out-of-stock" data-stock-status="Out of Stock" data-price="220.00" data-category="Fashion" data-views="700" data-purchases="90" data-reviews="30" data-discount-amount="0">
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=400" alt="Product"></div>
+            <div class="card-content"><span class="category" data-lang-key="category_fashion">Fashion</span><h3 class="product-name" data-lang-key="product11_name">Designer Sunglasses</h3><div class="availability"><span data-lang-key="status_outofstock">Out of Stock</span></div></div>
+            <div class="card-footer"><div class="price"><span>$220.00</span></div><div class="quantity-display"><span data-lang-key="quantity">Quantity</span>: 0</div></div>
+            <button class="heart-btn">♥</button>
+        </div>
+        <div class="product-card" data-price="89.99" data-category="Audio" data-views="1900" data-purchases="480" data-reviews="120" data-discount-amount="0">
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1550597813-917910222c7a?q=80&w=400" alt="Product"></div>
+            <div class="card-content"><span class="category" data-lang-key="category_audio">Audio</span><h3 class="product-name" data-lang-key="product12_name">Portable Speaker</h3><div class="availability in-stock"><span data-lang-key="status_instock">In Stock</span></div></div>
+            <div class="card-footer"><div class="price"><span>$89.99</span></div><div class="quantity-display"><span data-lang-key="quantity">Quantity</span>: 60</div></div>
+            <button class="heart-btn">♥</button>
+        </div>
+        <div class="product-card" data-price="49.99" data-category="Other" data-views="500" data-purchases="80" data-reviews="25" data-discount-amount="0">
+            <div class="card-image no-image"><span data-lang-key="no_image_placeholder">No Image</span></div>
+            <div class="card-content"><span class="category" data-lang-key="category_other">Other</span><h3 class="product-name" data-lang-key="product13_name">Mystery Box</h3><div class="availability in-stock"><span data-lang-key="status_instock">In Stock</span></div></div>
+            <div class="card-footer"><div class="price"><span>$49.99</span></div><div class="quantity-display"><span data-lang-key="quantity">Quantity</span>: 100</div></div>
+            <button class="heart-btn">♥</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
