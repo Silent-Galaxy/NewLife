@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داشبورد جامع مدیریت محصول</title>
+    <link rel="stylesheet" href="https://unpkg.com/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+    <main class="container">
+        <header class="form-header">
+            <h1>افزودن / ویرایش محصول جدید</h1>
+            <p>اطلاعات محصول، قیمت‌گذاری، SEO و جزئیات تکمیلی را در این فرم جامع مدیریت کنید.</p>
+        </header>
+
+        <!-- New Feature: Completeness Meter -->
+        <div class="completeness-meter">
+            <div class="completeness-header">
+                <span>میزان تکمیل اطلاعات</span>
+                <span id="completeness-percent">۰٪</span>
+            </div>
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <small id="completeness-tip" class="completeness-tip">برای بهبود SEO و دیده‌شدن، فیلدهای اصلی را پر کنید.</small>
+        </div>
+
+        <form id="product-form" class="product-form" novalidate>
+
+            <!-- بخش اطلاعات عمومی و SEO -->
+            <fieldset>
+                <legend>۱. اطلاعات عمومی و SEO</legend>
+                <div class="form-group">
+                    <label for="product-name">نام محصول</label>
+                    <input type="text" id="product-name" name="productName" required placeholder="مثال: Counter-Strike 2 Prime Status" data-score="10">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="store-name">نام فروشگاه/فروشنده</label>
+                        <input type="text" id="store-name" name="storeName" placeholder="مثال: GameZone" data-score="5">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-slug">شناسه URL محصول (Slug)</label>
+                        <input type="text" id="product-slug" name="productSlug" placeholder="مثال: cs2-prime-status" data-score="10">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>پیش‌نمایش URL نهایی</label>
+                    <div id="url-preview" class="url-preview">https://yoursite.com/store/<b>...</b>/<b>...</b></div>
+                </div>
+                <div class="form-group">
+                    <label for="tag-input">مدیریت تگ‌های محصول (حداقل ۳ تگ)</label>
+                    <div class="input-group">
+                        <input type="text" id="tag-input" placeholder="نام تگ جدید را وارد کنید...">
+                        <button type="button" id="add-tag-btn" class="btn btn-secondary">افزودن تگ</button>
+                    </div>
+                </div>
+                <div id="tags-preview-container" class="tags-preview-container" data-score="15"></div>
+                <div class="form-group">
+                    <label for="seo-title">عنوان صفحه (Google Title)</label>
+                    <input type="text" id="seo-title" name="seoTitle" maxlength="60" placeholder="حداکثر ۶۰ کاراکتر" data-score="10">
+                </div>
+                <div class="form-group">
+                    <label for="seo-meta">توضیحات متا (Meta Description)</label>
+                    <textarea id="seo-meta" name="seoMeta" rows="3" maxlength="160" placeholder="حداکثر ۱۶۰ کاراکتر" data-score="10"></textarea>
+                </div>
+            </fieldset>
+
+            <!-- بخش جزئیات تکمیلی محصول -->
+            <fieldset>
+                <legend>۲. جزئیات تکمیلی و تصاویر</legend>
+                <div class="form-group">
+                    <label for="official-desc">توضیحات رسمی</label>
+                    <textarea id="official-desc" name="officialDescription" rows="4" data-score="5"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="technical-specs">مشخصات فنی</label>
+                    <textarea id="technical-specs" name="technicalSpecs" rows="4"></textarea>
+                </div>
+                 <div class="form-group">
+                    <label for="transaction-method">روش معامله</label>
+                    <textarea id="transaction-method" name="transactionMethod" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="new-image-url">مدیریت تصاویر محصول (حداقل ۱ تصویر)</label>
+                    <div class="input-group">
+                        <input type="url" id="new-image-url" placeholder="آدرس URL تصویر جدید را وارد کنید...">
+                        <button type="button" id="add-image-btn" class="btn btn-secondary">افزودن تصویر</button>
+                    </div>
+                </div>
+                <div id="image-preview-container" class="image-preview-container" data-score="15"></div>
+            </fieldset>
+
+            <!-- بخش تب‌بندی شده برای خرید و فروش -->
+            <div class="tab-container">
+                <div class="tab-nav" role="tablist">
+                    <button type="button" id="sell-tab-btn" role="tab" aria-selected="true" aria-controls="sell-panel" class="tab-btn active">تنظیمات فروش</button>
+                    <button type="button" id="buy-tab-btn" role="tab" aria-selected="false" aria-controls="buy-panel" class="tab-btn">تنظیمات خرید</button>
+                </div>
+                <div class="tab-content">
+                    <!-- پنل تنظیمات فروش -->
+                    <div id="sell-panel" role="tabpanel" aria-labelledby="sell-tab-btn" class="tab-panel active">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="sell-price-toman">قیمت فروش (تومان)</label>
+                                <input type="number" id="sell-price-toman" name="sellPriceToman" data-score="10">
+                                <small id="sell-price-preview" class="price-preview" aria-live="polite"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="sell-price-usdt">قیمت فروش (تتر/USDT)</label>
+                                <input type="number" id="sell-price-usdt" name="sellPriceUSDT">
+                            </div>
+                            <div class="form-group"><label for="sell-stock">موجودی</label><input type="number" id="sell-stock" name="sellStock" min="0" data-score="5"></div>
+                            <div class="form-group status-control"><label>وضعیت</label><label class="switch"><input type="checkbox" name="isSellingActive" checked><span class="slider"></span></label></div>
+                        </div>
+                        <div class="form-group">
+                            <label>تخفیف فروش (زمان‌دار)</label>
+                            <div class="discount-group">
+                                <input type="number" name="discountPercent" placeholder="درصد تخفیف (٪)">
+                                <input type="text" id="discount-start-date" class="persian-datepicker-input" name="discountStartDate" placeholder="تاریخ و ساعت شروع" autocomplete="off">
+                                <input type="number" name="discountDurationValue" placeholder="مدت تخفیف">
+                                <select name="discountDurationUnit" title="واحد زمان">
+                                    <option value="minutes">دقیقه</option>
+                                    <option value="hours">ساعت</option>
+                                    <option value="days" selected>روز</option>
+                                    <option value="weeks">هفته</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group"><label for="sell-desc">توضیحات فروشنده</label><textarea id="sell-desc" name="sellDescription" rows="4"></textarea></div>
+                    </div>
+                    <!-- پنل تنظیمات خرید -->
+                    <div id="buy-panel" role="tabpanel" aria-labelledby="buy-tab-btn" class="tab-panel">
+                        <div class="form-row">
+                             <div class="form-group">
+                                <label for="buy-price-toman">قیمت پیشنهادی خرید (تومان)</label>
+                                <input type="number" id="buy-price-toman" name="buyPriceToman">
+                                <small id="buy-price-preview" class="price-preview" aria-live="polite"></small>
+                            </div>
+                            <div class="form-group"><label for="buy-price-usdt">قیمت پیشنهادی (تتر/USDT)</label><input type="number" id="buy-price-usdt" name="buyPriceUSDT"></div>
+                            <div class="form-group"><label for="buy-needed">تعداد مورد نیاز</label><input type="number" id="buy-needed" name="buyNeeded" min="0"></div>
+                            <div class="form-group status-control"><label>وضعیت</label><label class="switch"><input type="checkbox" name="isBuyingActive"><span class="slider"></span></label></div>
+                        </div>
+                        <div class="form-group"><label for="buy-desc">توضیحات خرید</label><textarea id="buy-desc" name="buyDescription" rows="4"></textarea></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">ارسال برای بازبینی</button>
+            </div>
+        </form>
+    </main>
+
+    <!-- Image Preview Modal -->
+    <div id="image-modal" class="image-modal">
+        <span class="modal-close" aria-label="بستن پیش‌نمایش">&times;</span>
+        <img class="modal-content" id="modal-image">
+    </div>
+
+    <script src="https://unpkg.com/persian-date@1.1.0/dist/persian-date.min.js"></script>
+    <script src="https://unpkg.com/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
