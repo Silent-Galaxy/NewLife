@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>از خرید شما سپاسگزاریم</title>
+    
+    <!-- فونت‌ها و آیکون‌ها -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- لینک به فایل CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- کامپوننت اسکلتی برای شبیه‌سازی بارگذاری -->
+    <div class="order-container-skeleton" id="skeleton-loader">
+        <div style="padding: 30px;">
+            <div class="skeleton skeleton-text" style="width: 60%; height: 30px; margin: 20px auto;"></div>
+            <div class="skeleton skeleton-text" style="width: 80%; margin: 10px auto;"></div>
+            <div class="skeleton" style="height: 150px; border-radius: 8px; margin-top: 30px;"></div>
+            <div class="skeleton" style="height: 150px; border-radius: 8px; margin-top: 20px;"></div>
+        </div>
+    </div>
+    
+    <div class="order-container" id="main-content" style="display: none;">
+        <header class="order-header">
+            <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+            <h1 id="page-title">از خرید شما سپاس و احترام</h1>
+            <p id="page-subtitle"></p>
+        </header>
+
+        <main class="order-main">
+            <!-- بخش نظردهی به کل سیستم/فروشگاه -->
+            <section class="system-feedback-section feedback-section">
+                <h4>تجربه شما از فروشگاه ما چطور بود؟</h4>
+                <p class="feedback-subtitle">این نظر به کل فرآیند خرید و وب‌سایت مربوط می‌شود.</p>
+                <div class="feedback-stars" data-rating="0">
+                    <i class="fa-regular fa-star" data-value="1" aria-label="امتیاز ۱"></i>
+                    <i class="fa-regular fa-star" data-value="2" aria-label="امتیاز ۲"></i>
+                    <i class="fa-regular fa-star" data-value="3" aria-label="امتیاز ۳"></i>
+                    <i class="fa-regular fa-star" data-value="4" aria-label="امتیاز ۴"></i>
+                    <i class="fa-regular fa-star" data-value="5" aria-label="امتیاز ۵"></i>
+                </div>
+                <textarea class="feedback-textarea" placeholder="نظر خود را در مورد تجربه کلی خرید بنویسید... (اختیاری)"></textarea>
+                <button class="action-button primary submit-feedback-btn">ثبت نظر برای فروشگاه</button>
+                <div class="feedback-submitted-message" style="display: none;">
+                    <i class="fas fa-check-circle"></i> نظر شما درباره فروشگاه ثبت شد. از بازخورد شما متشکریم!
+                </div>
+            </section>
+            
+            <!-- سفارش از سیستم (کد دیجیتال) -->
+            <section class="seller-order-group" aria-labelledby="seller1-name">
+                <header class="seller-profile-box">
+                    <div class="seller-details">
+                        <img src="https://i.pravatar.cc/50?u=system" alt="آواتار سیستم" class="seller-avatar">
+                        <div class="seller-info">
+                            <h3 id="seller1-name">سیستم فروشگاهی ما</h3>
+                            <p class="seller-stats"><i class="fas fa-shield-alt"></i><span>کد تحویلی توسط سیستم</span></p>
+                        </div>
+                    </div>
+                </header>
+                <div class="products-list">
+                    <!-- محصولی که بیش از 24 ساعت از تحویلش گذشته (برای نمایش تکمیل خودکار) -->
+                    <div class="product-delivery-box transaction-box" data-delivery-timestamp="2024-09-28T10:00:00Z">
+                        <div class="product-header">
+                            <div class="product-info"><h3>Elden Ring</h3><span>کد فعال‌سازی استیم</span></div>
+                        </div>
+                        <div class="product-key">
+                            <input type="text" value="ABCD-1234-EFGH-5678" readonly id="steamKey1">
+                            <button class="copy-btn" data-target="steamKey1"><i class="far fa-copy"></i><span>کپی</span></button>
+                        </div>
+                        
+                        <div class="auto-complete-warning" style="display: none;">
+                            <i class="fas fa-hourglass-half"></i> <span>برای تایید یا ثبت شکایت از این معامله <strong>23 ساعت و 59 دقیقه</strong> فرصت دارید.</span>
+                        </div>
+                        <div class="auto-completed-message" style="display: none;">
+                             <i class="fas fa-check-double"></i> <span>این معامله پس از ۲۴ ساعت به صورت خودکار تکمیل شد.</span>
+                        </div>
+                        
+                        <div class="transaction-actions">
+                            <button class="action-button primary confirm-receipt-btn"><i class="fas fa-check"></i> تایید دریافت محصول</button>
+                            <a href="#support" class="action-button danger report-btn"><i class="fas fa-headset"></i> پیگیری / شکایت</a>
+                        </div>
+                        <div class="confirmation-message" style="display: none;">
+                            <i class="fas fa-check-circle"></i> شما دریافت این محصول را تایید کرده‌اید.
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- سفارش از فروشنده GameLover92 (کد دیجیتال) -->
+            <section class="seller-order-group" aria-labelledby="seller2-name">
+                <header class="seller-profile-box">
+                     <div class="seller-details">
+                        <img src="https://i.pravatar.cc/50?u=GameLover92" alt="آواتار فروشنده" class="seller-avatar">
+                        <div class="seller-info">
+                            <h3 id="seller2-name">فروشنده GameLover92</h3>
+                            <p class="seller-stats"><i class="fas fa-check-circle"></i><span>فروشنده تایید شده</span></p>
+                        </div>
+                    </div>
+                </header>
+                <div class="products-list">
+                    <!-- محصولی که به تازگی تحویل شده (برای نمایش تایمر) -->
+                    <div class="product-delivery-box transaction-box" data-delivery-timestamp="">
+                        <div class="product-header">
+                             <div class="product-info"><h3>Cyberpunk 2077: Phantom Liberty</h3><span>بسته الحاقی (DLC) - GOG.com</span></div>
+                        </div>
+                        <div class="product-key">
+                            <input type="text" value="ZYXW-9876-VUTS-5432" readonly id="steamKey2">
+                            <button class="copy-btn" data-target="steamKey2"><i class="far fa-copy"></i><span>کپی</span></button>
+                        </div>
+                        
+                        <div class="auto-complete-warning" style="display: none;">
+                            <i class="fas fa-hourglass-half"></i> <span>برای تایید یا ثبت شکایت از این معامله <strong>23 ساعت و 59 دقیقه</strong> فرصت دارید.</span>
+                        </div>
+                        <div class="auto-completed-message" style="display: none;">
+                             <i class="fas fa-check-double"></i> <span>این معامله پس از ۲۴ ساعت به صورت خودکار تکمیل شد.</span>
+                        </div>
+
+                        <div class="transaction-actions">
+                            <button class="action-button primary confirm-receipt-btn"><i class="fas fa-check"></i> تایید دریافت محصول</button>
+                            <a href="#support" class="action-button danger report-btn"><i class="fas fa-headset"></i> پیگیری / شکایت</a>
+                        </div>
+                        <div class="confirmation-message" style="display: none;">
+                            <i class="fas fa-check-circle"></i> شما دریافت این محصول را تایید کرده‌اید.
+                        </div>
+                    </div>
+                </div>
+                <div class="feedback-section">
+                    <h4>نظر شما در مورد معامله با GameLover92 چیست؟</h4>
+                    <div class="feedback-stars" data-rating="0">
+                        <i class="fa-regular fa-star" data-value="1"></i><i class="fa-regular fa-star" data-value="2"></i><i class="fa-regular fa-star" data-value="3"></i><i class="fa-regular fa-star" data-value="4"></i><i class="fa-regular fa-star" data-value="5"></i>
+                    </div>
+                    <textarea class="feedback-textarea" placeholder="تجربه خود را بنویسید... (اختیاری)"></textarea>
+                    <button class="action-button primary submit-feedback-btn">ثبت نظر برای فروشنده</button>
+                    <div class="feedback-submitted-message" style="display: none;">
+                        <i class="fas fa-check-circle"></i> نظر شما برای این فروشنده ثبت شد.
+                    </div>
+                </div>
+            </section>
+
+            <!-- سفارش از فروشنده آیتم -->
+            <section class="seller-order-group" aria-labelledby="seller3-name">
+                <header class="seller-profile-box">
+                    <div class="seller-details">
+                        <img src="https://i.pravatar.cc/50?u=ItemTraderPro" alt="آواتار فروشنده" class="seller-avatar">
+                        <div class="seller-info">
+                            <h3 id="seller3-name">فروشنده ItemTraderPro</h3>
+                            <p class="seller-stats"><i class="fas fa-check-circle"></i><span>فروشنده تایید شده</span></p>
+                        </div>
+                    </div>
+                </header>
+                <div class="products-list">
+                    <div class="product-item-delivery transaction-box" data-delivery-timestamp="">
+                        <div class="product-info">
+                            <h3>Team Fortress 2 Keys</h3>
+                            <span>۵ عدد کلید Mann Co. Supply Crate</span>
+                        </div>
+                        <p class="item-delivery-info">
+                            <i class="fas fa-box-archive"></i>
+                            <span>این آیتم‌ها با موفقیت به حساب استیم شما ارسال شد.</span>
+                        </p>
+                        <div class="proof-of-delivery">
+                            <h5><i class="fas fa-file-invoice"></i> مدارک تحویل:</h5>
+                            <ul>
+                                <li><a href="#" target="_blank"><i class="fas fa-camera"></i> مشاهده اسکرین‌شات از ترید آفر</a></li>
+                                <li><a href="#" target="_blank"><i class="fas fa-link"></i> مشاهده تاریخچه ترید در استیم</a></li>
+                            </ul>
+                        </div>
+                         <div class="auto-complete-warning" style="display: none;">
+                            <i class="fas fa-hourglass-half"></i> <span>برای تایید یا ثبت شکایت از این معامله <strong>23 ساعت و 59 دقیقه</strong> فرصت دارید.</span>
+                        </div>
+                         <div class="auto-completed-message" style="display: none;">
+                             <i class="fas fa-check-double"></i> <span>این معامله پس از ۲۴ ساعت به صورت خودکار تکمیل شد.</span>
+                        </div>
+
+                        <div class="transaction-actions">
+                            <button class="action-button primary confirm-receipt-btn"><i class="fas fa-check"></i> تایید دریافت محصول</button>
+                            <a href="#support" class="action-button danger report-btn"><i class="fas fa-headset"></i> پیگیری / شکایت</a>
+                        </div>
+                        <div class="confirmation-message" style="display: none;">
+                            <i class="fas fa-check-circle"></i> شما دریافت این محصول را تایید کرده‌اید.
+                        </div>
+                    </div>
+                </div>
+                 <div class="feedback-section">
+                    <h4>نظر شما در مورد معامله با ItemTraderPro چیست؟</h4>
+                    <div class="feedback-stars" data-rating="0">
+                         <i class="fa-regular fa-star" data-value="1"></i><i class="fa-regular fa-star" data-value="2"></i><i class="fa-regular fa-star" data-value="3"></i><i class="fa-regular fa-star" data-value="4"></i><i class="fa-regular fa-star" data-value="5"></i>
+                    </div>
+                    <textarea class="feedback-textarea" placeholder="تجربه خود را از سرعت و دقت تحویل آیتم بنویسید..."></textarea>
+                    <button class="action-button primary submit-feedback-btn">ثبت نظر برای فروشنده</button>
+                    <div class="feedback-submitted-message" style="display: none;">
+                        <i class="fas fa-check-circle"></i> نظر شما برای این فروشنده ثبت شد.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <details class="invoice-details" open>
+            <summary><span>مشاهده فاکتور کلی پرداخت</span><i class="fas fa-chevron-down"></i></summary>
+            <div class="invoice-box">
+                 <table class="invoice-table">
+                    <thead>
+                        <tr><th>محصول</th><th>فروشنده</th><th class="align-left">قیمت</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Elden Ring</td><td>سیستم فروشگاهی</td><td class="align-left">۱,۵۰۰,۰۰۰ تومان</td></tr>
+                        <tr><td>Cyberpunk 2077: Phantom Liberty</td><td>GameLover92</td><td class="align-left">۸۵۰,۰۰۰ تومان</td></tr>
+                        <tr><td>Team Fortress 2 Keys (x5)</td><td>ItemTraderPro</td><td class="align-left">۴۵۰,۰۰۰ تومان</td></tr>
+                    </tbody>
+                    <tfoot>
+                        <tr><td colspan="2">جمع کل آیتم‌ها:</td><td class="align-left">۲,۸۰۰,۰۰۰ تومان</td></tr>
+                        <tr><td colspan="2">تخفیف کلی (کد SUMMER24):</td><td class="align-left">-۱۵۰,۰۰۰ تومان</td></tr>
+                        <tr class="total-row"><td colspan="2"><strong>مبلغ نهایی پرداخت شده:</strong></td><td class="align-left total-amount">۲,۶۵۰,۰۰۰ تومان</td></tr>
+                    </tfoot>
+                </table>
+            </div>
+        </details>
+        
+        <section id="community-support-section">
+            <h2>به جامعه ما بپیوندید و از ما حمایت کنید</h2>
+            <p>اگر از خدمات ما راضی هستید، می‌توانید از طریق راه‌های زیر به رشد ما کمک کنید.</p>
+            <div class="social-links">
+                <a href="#" class="social-icon twitch" aria-label="ما را در توییچ دنبال کنید"><i class="fab fa-twitch"></i></a>
+                <a href="#" class="social-icon instagram" aria-label="صفحه اینستاگرام ما"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon youtube" aria-label="کانال یوتیوب ما"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-icon discord" aria-label="به سرور دیسکورد ما بپیوندید"><i class="fab fa-discord"></i></a>
+            </div>
+            <a href="#" class="action-button donate-button">
+                <i class="fas fa-heart"></i>
+                <span>حمایت مالی (Donate)</span>
+            </a>
+        </section>
+        
+        <footer class="page-footer">
+            <h2>قدم بعدی چیست؟</h2>
+            <div class="actions">
+                <button id="print-invoice-btn" class="action-button"><i class="fas fa-print"></i> چاپ فاکتور</button>
+                <a href="#" class="action-button primary"><i class="fas fa-user-circle"></i> رفتن به پنل کاربری</a>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- مودال‌ها -->
+    <div id="feedback-modal" class="modal-overlay" style="display: none;"><div class="modal-content" role="dialog" aria-labelledby="feedback-modal-title" aria-modal="true"><h3 id="feedback-modal-title">تایید ثبت نظر</h3><p>آیا از ثبت نظر خود با امتیاز انتخاب شده اطمینان دارید؟</p><div class="modal-actions"><button id="modal-cancel-btn" class="action-button">انصراف</button><button id="modal-confirm-btn" class="action-button primary">بله، ثبت کن</button></div></div></div>
+    <div id="confirmation-modal" class="modal-overlay" style="display: none;"><div class="modal-content" role="dialog" aria-labelledby="confirmation-modal-title" aria-modal="true"><h3 id="confirmation-modal-title">آیا اطمینان دارید؟</h3><p id="confirmation-modal-text">این عملیات غیرقابل بازگشت است.</p><div class="modal-actions"><button id="confirmation-cancel-btn" class="action-button">انصراف</button><button id="confirmation-confirm-btn" class="action-button">تایید</button></div></div></div>
+    <div id="copy-notification" class="copy-notification" aria-live="polite"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

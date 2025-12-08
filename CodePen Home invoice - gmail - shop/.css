@@ -1,0 +1,314 @@
+/* --- متغیرهای اصلی و استایل‌های پایه --- */
+:root {
+    --color-background: #0d1117;
+    --color-surface: #161b22;
+    --color-surface-light: #21262d;
+    --color-border: #30363d;
+    --color-primary: #58a6ff;
+    --color-primary-dark: #388bfd;
+    --color-success: #3fb950;
+    --color-warning: #e3b341;
+    --color-danger: #f85149;
+    --color-danger-dark: #da3633;
+    --color-text-primary: #c9d1d9;
+    --color-text-secondary: #8b949e;
+    --color-white: #ffffff;
+
+    /* رنگ‌های برند شبکه‌های اجتماعی */
+    --brand-twitch: #9146FF;
+    --brand-youtube: #FF0000;
+    --brand-discord: #5865F2;
+    --brand-instagram-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    
+    /* متغیرهای RGB برای استفاده در rgba */
+    --color-warning-rgb: 227, 179, 65;
+    --color-text-secondary-rgb: 139, 148, 158;
+}
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.7;
+    direction: rtl;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* --- کانتینر اصلی و هدر --- */
+.order-container {
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--color-surface);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    opacity: 0;
+    animation: fade-in 0.5s 0.5s forwards;
+}
+
+.order-header {
+    background: linear-gradient(135deg, #1f242c, #161b22);
+    padding: 30px;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+}
+.success-icon { font-size: 50px; color: var(--color-success); margin-bottom: 15px; }
+h1 { margin: 0; font-size: 28px; color: var(--color-white); }
+#page-subtitle { margin: 5px 0 0; color: var(--color-text-secondary); font-size: 16px; }
+
+.order-main { padding: 20px 30px; }
+
+/* --- بخش نظردهی به کل سیستم --- */
+.system-feedback-section {
+    background-color: var(--color-surface-light);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+.feedback-subtitle {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin: -10px 0 15px 0;
+}
+
+/* --- کامپوننت گروه سفارش فروشنده --- */
+.seller-order-group {
+    background-color: rgba(0,0,0,0.15);
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+}
+
+.seller-profile-box {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    background-color: var(--color-surface-light);
+    border-bottom: 1px solid var(--color-border);
+    flex-wrap: wrap;
+}
+.seller-details { display: flex; align-items: center; gap: 15px; }
+.seller-avatar { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--color-border); }
+.seller-info h3 { margin: 0 0 5px 0; font-size: 18px; color: var(--color-white); }
+.seller-stats { display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--color-text-secondary); }
+.seller-stats i { color: var(--color-success); }
+.seller-stats i.fa-shield-alt { color: var(--color-primary); }
+
+.products-list { padding: 20px; }
+.product-delivery-box, .product-item-delivery { 
+    background-color: var(--color-surface); 
+    border: 1px solid var(--color-border); 
+    border-radius: 8px; padding: 20px; 
+}
+.product-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.product-info h3 { margin: 0; font-size: 18px; color: var(--color-white); }
+.product-info span { font-size: 14px; color: var(--color-text-secondary); }
+
+.product-key { display: flex; align-items: center; background-color: var(--color-background); border-radius: 6px; border: 1px solid var(--color-border); }
+.product-key input { background: transparent; border: none; color: var(--color-success); font-family: 'Menlo', 'Consolas', monospace; font-size: 16px; padding: 10px 15px; width: 100%; direction: ltr; }
+.copy-btn { background-color: var(--color-primary); color: var(--color-white); border: none; padding: 10px 15px; cursor: pointer; border-radius: 6px 0 0 6px; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+.copy-btn:hover { background-color: var(--color-primary-dark); }
+.copy-btn.copied { background-color: var(--color-success); }
+
+
+/* --- بخش‌های جدید: هشدار و پیام تکمیل خودکار --- */
+.auto-complete-warning, .auto-completed-message {
+    margin-top: 15px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.auto-complete-warning {
+    background-color: rgba(var(--color-warning-rgb), 0.1);
+    border: 1px solid var(--color-warning);
+    color: var(--color-text-primary);
+}
+.auto-complete-warning i { color: var(--color-warning); }
+.auto-completed-message {
+    background-color: rgba(var(--color-text-secondary-rgb), 0.1);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+}
+.auto-completed-message i { color: var(--color-text-secondary); }
+
+
+.transaction-actions {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.confirmation-message {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: rgba(63, 185, 80, 0.1);
+    border: 1px solid var(--color-success);
+    color: var(--color-text-primary);
+    border-radius: 8px;
+    display: none; /* Hidden by default */
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+.confirmation-message i { color: var(--color-success); }
+
+/* --- بخش تحویل آیتم و مدارک --- */
+.item-delivery-info { margin-top: 15px; padding: 12px; background-color: rgba(63, 185, 80, 0.1); border-radius: 6px; color: var(--color-text-primary); display: flex; align-items: center; gap: 10px; font-size: 15px; }
+.item-delivery-info i { color: var(--color-success); font-size: 18px; }
+.proof-of-delivery { margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--color-border); }
+.proof-of-delivery h5 { margin: 0 0 10px 0; color: var(--color-text-secondary); font-size: 14px; display: flex; align-items: center; gap: 8px; }
+.proof-of-delivery ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.proof-of-delivery ul li a { display: block; padding: 8px 12px; background-color: var(--color-surface-light); border-radius: 6px; color: var(--color-primary); text-decoration: none; transition: background-color 0.2s; font-size: 14px; }
+.proof-of-delivery ul li a:hover { background-color: #30363d; }
+.proof-of-delivery ul li a i { margin-left: 8px; }
+
+/* --- بخش ثبت نظر --- */
+.feedback-section { padding: 20px; border-top: 1px solid var(--color-border); background-color: var(--color-surface); }
+.feedback-section:not(.system-feedback-section) { background-color: rgba(0,0,0,0.2); }
+.feedback-section h4 { margin: 0 0 15px 0; color: var(--color-white); }
+.feedback-stars { display: flex; gap: 5px; margin-bottom: 15px; cursor: pointer; }
+.feedback-stars i { font-size: 24px; color: var(--color-text-secondary); transition: color 0.2s, transform 0.2s; }
+.feedback-stars i:hover { transform: scale(1.2); }
+.feedback-stars.rated i, .feedback-stars:hover i { color: var(--color-warning); }
+.feedback-stars:hover i ~ i, .feedback-stars.rated i ~ i { color: var(--color-text-secondary); }
+.feedback-textarea { width: 100%; box-sizing: border-box; background-color: var(--color-background); border: 1px solid var(--color-border); border-radius: 8px; padding: 10px; color: var(--color-text-primary); font-family: inherit; min-height: 80px; resize: vertical; margin-bottom: 15px; }
+.submit-feedback-btn { width: 100%; }
+.feedback-submitted-message { background-color: rgba(63, 185, 80, 0.1); border: 1px solid var(--color-success); color: var(--color-text-primary); padding: 12px 15px; border-radius: 8px; font-size: 14px; display: none; align-items: center; gap: 10px; }
+.feedback-submitted-message i { color: var(--color-success); }
+
+/* --- بخش فاکتور دقیق --- */
+.invoice-details { border-top: 1px solid var(--color-border); }
+.invoice-details summary { padding: 15px 30px; cursor: pointer; font-weight: bold; font-size: 16px; display: flex; justify-content: space-between; align-items: center; }
+.invoice-details[open] > summary i { transform: rotate(180deg); }
+.invoice-box { padding: 20px 30px; border-top: 1px solid var(--color-border); background-color: var(--color-background); }
+.invoice-table { width: 100%; border-collapse: collapse; text-align: right; }
+.invoice-table th, .invoice-table td { padding: 12px; border-bottom: 1px solid var(--color-border); }
+.invoice-table tbody tr:last-child td { border-bottom: 2px solid var(--color-border); }
+.invoice-table tfoot td { border: none; }
+.total-row strong { font-size: 18px; }
+.total-amount { font-size: 18px; color: var(--color-success); }
+.align-left { text-align: left; }
+
+/* --- بخش حمایت و جامعه (بهینه‌سازی شده) --- */
+#community-support-section {
+    padding: 30px;
+    text-align: center;
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-surface-light);
+}
+#community-support-section h2 { margin: 0 0 10px; font-size: 22px; color: var(--color-white); }
+#community-support-section p { margin: 0 auto 25px; color: var(--color-text-secondary); max-width: 500px; }
+.social-links { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; }
+.social-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    font-size: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.social-icon:hover {
+    color: var(--color-white);
+    transform: translateY(-3px);
+    border-color: transparent;
+}
+/* اعمال رنگ‌های برند */
+.social-icon.twitch:hover { background-color: var(--brand-twitch); }
+.social-icon.instagram:hover { background: var(--brand-instagram-gradient); }
+.social-icon.youtube:hover { background-color: var(--brand-youtube); }
+.social-icon.discord:hover { background-color: var(--brand-discord); }
+
+.donate-button { padding: 12px 30px; font-size: 16px; }
+.donate-button .fa-heart { color: #ff7b72; margin-right: 8px; }
+
+/* --- فوتر و دکمه‌های اقدام --- */
+.page-footer { 
+    padding: 30px; 
+    text-align: center; 
+    border-top: 1px solid var(--color-border); 
+    background-color: var(--color-surface);
+}
+.actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+.action-button { background-color: var(--color-surface-light); color: var(--color-white); text-decoration: none; padding: 12px 25px; border-radius: 8px; font-weight: 500; transition: all 0.3s; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid var(--color-border); cursor: pointer; font-size: 14px; }
+.action-button:hover { transform: translateY(-2px); border-color: var(--color-text-secondary); }
+.action-button.primary { background-color: var(--color-primary); border-color: var(--color-primary); }
+.action-button.primary:hover { background-color: var(--color-primary-dark); border-color: var(--color-primary-dark); }
+.action-button.danger { background-color: transparent; border-color: var(--color-danger); color: var(--color-danger); }
+.action-button.danger:hover { background-color: var(--color-danger); border-color: var(--color-danger); color: var(--color-white); }
+.action-button.confirm-danger { background-color: var(--color-danger); border-color: var(--color-danger); color: var(--color-white); }
+.action-button.confirm-danger:hover { background-color: var(--color-danger-dark); border-color: var(--color-danger-dark); }
+
+/* --- مودال، نوتیفیکیشن، انیمیشن‌ها --- */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); display: flex; justify-content: center; align-items: center; z-index: 1000; animation: fadeIn 0.3s forwards; }
+.modal-content { background-color: var(--color-surface); padding: 30px; border-radius: 12px; border: 1px solid var(--color-border); width: 90%; max-width: 400px; text-align: center; animation: scaleUp 0.3s forwards; }
+.modal-content h3 { margin-top: 0; }
+.modal-actions { margin-top: 25px; display: flex; justify-content: center; gap: 15px; }
+.copy-notification { position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); background-color: var(--color-success); color: var(--color-white); padding: 10px 20px; border-radius: 6px; z-index: 1001; transition: all 0.5s ease-in-out; }
+.copy-notification.show { bottom: 20px; }
+.order-container-skeleton { width: 100%; max-width: 800px; background-color: var(--color-surface); border-radius: 12px; border: 1px solid var(--color-border); }
+.skeleton { animation: shimmer 1.5s infinite linear; background: linear-gradient(90deg, var(--color-surface-light) 25%, #30363d 50%, var(--color-surface-light) 75%); background-size: 200% 100%; }
+.skeleton-text { height: 20px; border-radius: 4px; margin-bottom: 10px; }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scaleUp { from { transform: scale(0.9); } to { transform: scale(1); } }
+@keyframes fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- استایل چاپ (بهینه‌سازی شده) --- */
+@media print {
+    body {
+        background-color: #fff !important;
+        color: #000 !important;
+        padding: 0;
+        margin: 0;
+    }
+    .order-container {
+        box-shadow: none !important;
+        border: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .order-header, .invoice-box {
+        background: #fff !important;
+    }
+    .order-header h1, .total-row strong, .total-amount {
+        color: #000 !important;
+    }
+    .invoice-table th, .invoice-table td {
+        color: #000 !important;
+        border-color: #ccc !important;
+    }
+    .seller-order-group {
+        display: none;
+    }
+    .system-feedback-section, .feedback-section, .page-footer, .invoice-details summary, #community-support-section, .order-main {
+        display: none !important;
+    }
+    .invoice-details {
+        border-top: none !important;
+    }
+    .invoice-details[open] .invoice-box {
+        display: block;
+        padding: 0;
+    }
+}
